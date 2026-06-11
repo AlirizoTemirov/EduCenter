@@ -11,18 +11,21 @@ export default async function page({
   const { id } = await params;
   const supabase = await createClient();
 
-  const { data: group } = await supabase
-    .from("groups")
-    .select("*")
-    .eq("id", id)
-    .single();
-  const { data: groups } = await supabase.from("groups").select("*");
-  const { data: courses } = await supabase.from("courses").select("*");
-  const { data: teachers } = await supabase.from("teachers").select("*");
-  const { data: students } = await supabase.from("students").select("*");
-  const { data: groupStudents } = await supabase
-    .from("group_students")
-    .select("*");
+  const [
+    { data: group },
+    { data: groups },
+    { data: courses },
+    { data: teachers },
+    { data: group_students },
+    { data: students },
+  ] = await Promise.all([
+    supabase.from("groups").select("*").eq("id", id).single(),
+    supabase.from("groups").select("*"),
+    supabase.from("courses").select("*"),
+    supabase.from("teachers").select("*"),
+    supabase.from("group_students").select("*"),
+    supabase.from("students").select("*"),
+  ]);
 
   if (!group) notFound();
 
@@ -33,7 +36,7 @@ export default async function page({
       courses={(courses as Course[]) || []}
       teachers={(teachers as Teacher[]) || []}
       students={(students as Student[]) || []}
-      groupStudents={(groupStudents as GroupStudent[]) || []}
+      groupStudents={(group_students as GroupStudent[]) || []}
     />
   );
 }

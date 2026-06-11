@@ -13,31 +13,40 @@ import Dashboard from "../Dashboard";
 export default async function Home() {
   const supabase = await createClient();
 
-  const { data: students } = await supabase.from("students").select("*");
-  const { data: teachers } = await supabase.from("teachers").select("*");
-  const { data: courses } = await supabase.from("courses").select("*");
-  const { data: groups } = await supabase.from("groups").select("*");
-  const { data: groupStudents } = await supabase
-    .from("group_students")
-    .select("*");
-  const { data: transactions } = await supabase
-    .from("finance_transactions")
-    .select("*")
-    .order("created_at", { ascending: false });
-  const { data: payments } = await supabase
-    .from("paymants")
-    .select("*")
-    .order("created_at", { ascending: false });
+  const [
+    { data: students = [] },
+    { data: teachers = [] },
+    { data: courses = [] },
+    { data: groups = [] },
+    { data: groupStudents = [] },
+    { data: transactions = [] },
+    { data: payments = [] },
+  ] = await Promise.all([
+    supabase.from("students").select("*"),
+    supabase.from("teachers").select("*"),
+    supabase.from("courses").select("*"),
+    supabase.from("groups").select("*"),
+    supabase.from("group_students").select("*"),
+    supabase
+      .from("finance_transactions")
+      .select("*")
+      .order("created_at", { ascending: false }),
+
+    supabase
+      .from("paymants")
+      .select("*")
+      .order("created_at", { ascending: false }),
+  ]);
 
   return (
     <Dashboard
-      students={(students as Student[]) || []}
-      teachers={(teachers as Teacher[]) || []}
-      courses={(courses as Course[]) || []}
-      groups={(groups as Group[]) || []}
-      groupStudents={(groupStudents as GroupStudent[]) || []}
-      transactions={(transactions as FinanceTransaction[]) || []}
-      payments={(payments as Payment[]) || []}
+      students={students as Student[]}
+      teachers={teachers as Teacher[]}
+      courses={courses as Course[]}
+      groups={groups as Group[]}
+      groupStudents={groupStudents as GroupStudent[]}
+      transactions={transactions as FinanceTransaction[]}
+      payments={payments as Payment[]}
     />
   );
 }

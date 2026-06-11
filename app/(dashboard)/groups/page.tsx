@@ -5,19 +5,24 @@ import GroupTable from "./GroupTable";
 export default async function page() {
   const supabase = await createClient();
 
-  const { data: groups } = await supabase.from("groups").select("*");
-  const { data: courses } = await supabase.from("courses").select("*");
-  const { data: teachers } = await supabase.from("teachers").select("*");
-  const { data: groupStudents } = await supabase
-    .from("group_students")
-    .select("*");
+  const [
+    { data: groups },
+    { data: courses },
+    { data: teachers },
+    { data: group_students },
+  ] = await Promise.all([
+    supabase.from("groups").select("*"),
+    supabase.from("courses").select("*"),
+    supabase.from("teachers").select("*"),
+    supabase.from("group_students").select("*"),
+  ]);
 
   return (
     <GroupTable
       groups={(groups as Group[]) || []}
       courses={(courses as Course[]) || []}
       teachers={(teachers as Teacher[]) || []}
-      groupStudents={(groupStudents as GroupStudent[]) || []}
+      groupStudents={(group_students as GroupStudent[]) || []}
     />
   );
 }

@@ -5,8 +5,10 @@ import CourseTable from "./CourseTable";
 export default async function page() {
   const supabase = await createClient();
 
-  const { data: courses } = await supabase.from("courses").select("*");
-  const { data: groups } = await supabase.from("groups").select("*");
+  const [{ data: groups }, { data: courses }] = await Promise.all([
+    supabase.from("groups").select("*"),
+    supabase.from("courses").select("*"),
+  ]);
 
   return (
     <CourseTable

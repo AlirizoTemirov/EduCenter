@@ -537,10 +537,10 @@ export default function PaymentTable({
                 y: 20,
               }}
               transition={{ duration: 0.2 }}
-              className="w-full max-w-4xl rounded-4xl bg-white p-8 shadow-2xl"
+              className="w-full max-w-4xl rounded-4xl bg-white px-8 py-5 shadow-2xl"
             >
               {/* Header */}
-              <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center justify-between mb-4">
                 <div>
                   <h2 className="text-3xl font-bold text-slate-800">
                     To'lov qo'shish
@@ -574,7 +574,7 @@ export default function PaymentTable({
                   className="
               w-full
               mt-2
-              h-14
+              h-12
               rounded-2xl
               border
               border-slate-200
@@ -613,7 +613,7 @@ export default function PaymentTable({
                         className="
                     w-full
                     mt-2
-                    h-14
+                    h-12
                     rounded-2xl
                     border
                     border-slate-200
@@ -652,7 +652,7 @@ export default function PaymentTable({
                         className="
                     w-full
                     mt-2
-                    h-14
+                    h-12
                     rounded-2xl
                     border
                     border-slate-200
@@ -671,7 +671,7 @@ export default function PaymentTable({
                   {studentId && (
                     <>
                       <div className="grid grid-cols-2 gap-6 mt-6">
-                        <div className="rounded-3xl bg-slate-50 p-5">
+                        <div className="rounded-3xl bg-slate-50 p-4">
                           <p className="text-slate-500 text-sm">
                             Tanlangan guruh
                           </p>
@@ -681,7 +681,7 @@ export default function PaymentTable({
                           </h3>
                         </div>
 
-                        <div className="rounded-3xl bg-slate-50 p-5">
+                        <div className="rounded-3xl bg-slate-50 p-4">
                           <p className="text-slate-500 text-sm">Oylik to'lov</p>
 
                           <h3 className="font-semibold text-xl mt-2">
@@ -708,7 +708,7 @@ export default function PaymentTable({
                             placeholder="800000"
                             className="
                         w-full
-                        h-14
+                        h-12
                         rounded-2xl
                         border
                         border-slate-200
@@ -734,7 +734,7 @@ export default function PaymentTable({
                         <textarea
                           value={note}
                           onChange={(e) => setNote(e.target.value)}
-                          rows={3}
+                          rows={2}
                           placeholder="Ixtiyoriy izoh..."
                           className="
                       w-full
@@ -752,7 +752,7 @@ export default function PaymentTable({
                       </div>
 
                       {/* Footer */}
-                      <div className="flex justify-end gap-4 mt-8">
+                      <div className="flex justify-end gap-4 mt-4">
                         <button
                           onClick={() => {
                             reset();
@@ -785,6 +785,7 @@ export default function PaymentTable({
                       font-medium
                       disabled:opacity-50
                       disabled:cursor-not-allowed
+                      cursor-pointer
                     "
                         >
                           {isLoading ? (

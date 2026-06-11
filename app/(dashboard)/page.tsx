@@ -14,13 +14,13 @@ export default async function Home() {
   const supabase = await createClient();
 
   const [
-    { data: students = [] },
-    { data: teachers = [] },
-    { data: courses = [] },
-    { data: groups = [] },
-    { data: groupStudents = [] },
-    { data: transactions = [] },
-    { data: payments = [] },
+    { data: students },
+    { data: teachers },
+    { data: courses },
+    { data: groups },
+    { data: groupStudents },
+    { data: transactions },
+    { data: payments },
   ] = await Promise.all([
     supabase.from("students").select("*"),
     supabase.from("teachers").select("*"),
@@ -40,13 +40,13 @@ export default async function Home() {
 
   return (
     <Dashboard
-      students={students as Student[]}
-      teachers={teachers as Teacher[]}
-      courses={courses as Course[]}
-      groups={groups as Group[]}
-      groupStudents={groupStudents as GroupStudent[]}
-      transactions={transactions as FinanceTransaction[]}
-      payments={payments as Payment[]}
+      students={(students as Student[]) ?? []}
+      teachers={(teachers as Teacher[]) ?? []}
+      courses={(courses as Course[]) ?? []}
+      groups={(groups as Group[]) ?? []}
+      groupStudents={(groupStudents as GroupStudent[]) ?? []}
+      transactions={(transactions as FinanceTransaction[]) ?? []}
+      payments={(payments as Payment[]) ?? []}
     />
   );
 }

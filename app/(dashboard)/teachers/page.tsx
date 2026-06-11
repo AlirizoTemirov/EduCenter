@@ -7,5 +7,5 @@ export default async function page() {
 
   const { data } = await supabase.from("teachers").select("*");
 
-  return <TeacherTable teachers={data as Teacher[]} />;
+  return <TeacherTable teachers={(data as Teacher[]) ?? []} />;
 }

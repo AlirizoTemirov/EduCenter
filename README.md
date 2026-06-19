@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EduCenter Management System
 
-## Getting Started
+EduCenter is a modern education center management system built with Next.js and Supabase. The platform helps administrators manage students, teachers, courses, groups, attendance, and payments through a centralized dashboard.
 
-First, run the development server:
+## Demo Account
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Use the following credentials to explore the application:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Email:** [admin@gmail.com](mailto:admin@gmail.com)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Password:** admin1234
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Features
 
-## Learn More
+### Dashboard
 
-To learn more about Next.js, take a look at the following resources:
+* Revenue statistics
+* Payment status overview
+* Administrative insights
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Student Management
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* Add students
+* Edit student information
+* Manage student records
 
-## Deploy on Vercel
+### Teacher Management
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* Add teachers
+* Manage teacher information
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Course Management
+
+* Create courses
+* Manage educational programs
+
+### Group Management
+
+* Create groups
+* Assign students to groups
+
+### Payment Management
+
+* Track student payments
+* Monitor payment status
+* Manage financial records
+
+### Attendance Management
+
+* Record attendance
+* Monitor student participation
+
+## Tech Stack
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+* Supabase Authentication
+* Supabase Database
+* PostgreSQL
+
+## Future Improvements
+
+* Student reports
+* Teacher attendance tracking
+* SMS notifications
+* Analytics and reporting
+
+## Author
+
+Alirizo Temirov
